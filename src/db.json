@@ -12,7 +12,38 @@
       "name": "Ridila",
       "email": "ridilak462@gmail.com",
       "password": "12345",
-      "cart": [],
+      "cart": [
+        {
+          "id": "2",
+          "heading": "Multi Pet Nobby Wobby dog Rubber ball",
+          "discription": "A durable, non-toxic rubber ball with a fun wobble design, perfect for chewing, fetching, and keeping dogs entertained.",
+          "url": "https://i.pinimg.com/736x/23/fd/ac/23fdac87055a5c4c011c23bc1708bd2f.jpg",
+          "catogory": "pet-toys",
+          "price": "40",
+          "rating": 3,
+          "quantity": 1
+        },
+        {
+          "id": "3",
+          "heading": "Pedigree Adult Dry Food",
+          "discription": "Pedigree Adult Dry Food is a specially formulated dog food designed to meet the nutritional needs of adult dogs. Packed with high-quality protein, it supports strong muscles and overall health. The formula includes essential vitamins and minerals to promote a shiny coat, healthy teeth, and digestive health. It is designed to provide balanced nutrition for active dogs and help maintain their energy levels throughout the day.",
+          "url": "https://i.pinimg.com/736x/4c/d9/16/4cd916e24ff4503b5a32c66b7236d0ff.jpg",
+          "catogory": "dog-food",
+          "price": "23",
+          "rating": 3,
+          "quantity": 1
+        },
+        {
+          "id": "6",
+          "heading": "Harringtons Complete Natural Adult Dry Dog Food Turkey & Veg 15kg",
+          "discription": "This improved recipe food contains Vitamins, minerals and Omega 3 & 6 in the form of salmon oil to support overall health, maintain a healthy coat and reduce flatulence odour.",
+          "url": "https://cdn.petsathome.com/public/images/products/900_37036.jpg",
+          "catogory": "dog-food",
+          "price": 34.9,
+          "rating": 4,
+          "quantity": 1
+        }
+      ],
       "ordres": [
         {
           "id": "1",
@@ -273,6 +304,26 @@
           "price": "40",
           "rating": 3,
           "quantity": 1
+        },
+        {
+          "id": "3",
+          "heading": "Pedigree Adult Dry Food",
+          "discription": "Pedigree Adult Dry Food is a specially formulated dog food designed to meet the nutritional needs of adult dogs. Packed with high-quality protein, it supports strong muscles and overall health. The formula includes essential vitamins and minerals to promote a shiny coat, healthy teeth, and digestive health. It is designed to provide balanced nutrition for active dogs and help maintain their energy levels throughout the day.",
+          "url": "https://i.pinimg.com/736x/4c/d9/16/4cd916e24ff4503b5a32c66b7236d0ff.jpg",
+          "catogory": "dog-food",
+          "price": "23",
+          "rating": 3,
+          "quantity": 2
+        },
+        {
+          "id": "2",
+          "heading": "Multi Pet Nobby Wobby dog Rubber ball",
+          "discription": "A durable, non-toxic rubber ball with a fun wobble design, perfect for chewing, fetching, and keeping dogs entertained.",
+          "url": "https://i.pinimg.com/736x/23/fd/ac/23fdac87055a5c4c011c23bc1708bd2f.jpg",
+          "catogory": "pet-toys",
+          "price": "40",
+          "rating": 3,
+          "quantity": 4
         }
       ],
       "orders": [],
@@ -825,7 +876,28 @@
       "email": "admin@gmail.com",
       "password": "admin123",
       "isAdmin": true,
-      "cart": [],
+      "cart": [
+        {
+          "id": "2",
+          "heading": "Multi Pet Nobby Wobby dog Rubber ball",
+          "discription": "A durable, non-toxic rubber ball with a fun wobble design, perfect for chewing, fetching, and keeping dogs entertained.",
+          "url": "https://i.pinimg.com/736x/23/fd/ac/23fdac87055a5c4c011c23bc1708bd2f.jpg",
+          "catogory": "pet-toys",
+          "price": "40",
+          "rating": 3,
+          "quantity": 5
+        },
+        {
+          "id": "1",
+          "heading": "Royal Canin Indoor Adult Cat Food",
+          "discription": "Premium cat foods are nutritionally balanced, high-quality meals made with real meat, natural ingredients, and essential vitamins to ensure your cat's overall health, energy, and shiny coat. They are free from fillers, artificial preservatives, and by-products.",
+          "url": "https://i.pinimg.com/736x/65/ce/df/65cedf391e11048d2c4dbd316bf8d63a.jpg",
+          "catogory": "cat-food",
+          "price": "47",
+          "rating": 3,
+          "quantity": 1
+        }
+      ],
       "ordres": [
         {
           "id": "2",
@@ -1000,6 +1072,120 @@
           "price": "23",
           "rating": 3,
           "quantity": 3
+        }
+      ],
+      "isLogged": true,
+      "isAdmin": false
+    },
+    {
+      "id": "25b1",
+      "name": "anu",
+      "email": "anu1@gmail.com",
+      "password": "12345",
+      "cart": [],
+      "ordres": [
+        {
+          "id": "1",
+          "heading": "Royal Canin Indoor Adult Cat Food",
+          "discription": "Premium cat foods are nutritionally balanced, high-quality meals made with real meat, natural ingredients, and essential vitamins to ensure your cat's overall health, energy, and shiny coat. They are free from fillers, artificial preservatives, and by-products.",
+          "url": "https://i.pinimg.com/736x/65/ce/df/65cedf391e11048d2c4dbd316bf8d63a.jpg",
+          "catogory": "cat-food",
+          "price": "47",
+          "rating": 3,
+          "quantity": 4
+        },
+        {
+          "id": "3",
+          "heading": "Pedigree Adult Dry Food",
+          "discription": "Pedigree Adult Dry Food is a specially formulated dog food designed to meet the nutritional needs of adult dogs. Packed with high-quality protein, it supports strong muscles and overall health. The formula includes essential vitamins and minerals to promote a shiny coat, healthy teeth, and digestive health. It is designed to provide balanced nutrition for active dogs and help maintain their energy levels throughout the day.",
+          "url": "https://i.pinimg.com/736x/4c/d9/16/4cd916e24ff4503b5a32c66b7236d0ff.jpg",
+          "catogory": "dog-food",
+          "price": "23",
+          "rating": 3,
+          "quantity": 2
+        }
+      ],
+      "isLogged": false,
+      "isAdmin": false
+    },
+    {
+      "id": "1447",
+      "name": "Manu",
+      "email": "manu@gmail.com",
+      "password": "12345",
+      "cart": [],
+      "ordres": [
+        {
+          "id": "2",
+          "heading": "Multi Pet Nobby Wobby dog Rubber ball",
+          "discription": "A durable, non-toxic rubber ball with a fun wobble design, perfect for chewing, fetching, and keeping dogs entertained.",
+          "url": "https://i.pinimg.com/736x/23/fd/ac/23fdac87055a5c4c011c23bc1708bd2f.jpg",
+          "catogory": "pet-toys",
+          "price": "40",
+          "rating": 3,
+          "quantity": 4
+        },
+        {
+          "id": "3",
+          "heading": "Pedigree Adult Dry Food",
+          "discription": "Pedigree Adult Dry Food is a specially formulated dog food designed to meet the nutritional needs of adult dogs. Packed with high-quality protein, it supports strong muscles and overall health. The formula includes essential vitamins and minerals to promote a shiny coat, healthy teeth, and digestive health. It is designed to provide balanced nutrition for active dogs and help maintain their energy levels throughout the day.",
+          "url": "https://i.pinimg.com/736x/4c/d9/16/4cd916e24ff4503b5a32c66b7236d0ff.jpg",
+          "catogory": "dog-food",
+          "price": "23",
+          "rating": 3,
+          "quantity": 1
+        }
+      ],
+      "isLogged": true,
+      "isAdmin": false
+    },
+    {
+      "id": "77ec",
+      "name": "mubash",
+      "email": "mubash@gmail.com",
+      "password": "12345",
+      "cart": [],
+      "ordres": [
+        {
+          "id": "2",
+          "heading": "Multi Pet Nobby Wobby dog Rubber ball",
+          "discription": "A durable, non-toxic rubber ball with a fun wobble design, perfect for chewing, fetching, and keeping dogs entertained.",
+          "url": "https://i.pinimg.com/736x/23/fd/ac/23fdac87055a5c4c011c23bc1708bd2f.jpg",
+          "catogory": "pet-toys",
+          "price": "40",
+          "rating": 3,
+          "quantity": 3
+        },
+        {
+          "id": "3",
+          "heading": "Pedigree Adult Dry Food",
+          "discription": "Pedigree Adult Dry Food is a specially formulated dog food designed to meet the nutritional needs of adult dogs. Packed with high-quality protein, it supports strong muscles and overall health. The formula includes essential vitamins and minerals to promote a shiny coat, healthy teeth, and digestive health. It is designed to provide balanced nutrition for active dogs and help maintain their energy levels throughout the day.",
+          "url": "https://i.pinimg.com/736x/4c/d9/16/4cd916e24ff4503b5a32c66b7236d0ff.jpg",
+          "catogory": "dog-food",
+          "price": "23",
+          "rating": 3,
+          "quantity": 4
+        }
+      ],
+      "isLogged": false,
+      "isAdmin": false
+    },
+    {
+      "id": "5d99",
+      "name": "jommy",
+      "email": "jomy@gmail.com",
+      "password": "123456",
+      "cart": [],
+      "ordres": [
+        {
+          "id": "3",
+          "heading": "Pedigree Adult Dry Food",
+          "discription": "Pedigree Adult Dry Food is a specially formulated dog food designed to meet the nutritional needs of adult dogs. Packed with high-quality protein, it supports strong muscles and overall health. The formula includes essential vitamins and minerals to promote a shiny coat, healthy teeth, and digestive health. It is designed to provide balanced nutrition for active dogs and help maintain their energy levels throughout the day.",
+          "url": "https://i.pinimg.com/736x/4c/d9/16/4cd916e24ff4503b5a32c66b7236d0ff.jpg",
+          "catogory": "dog-food",
+          "price": "23",
+          "rating": 3,
+          "quantity": 1
         }
       ],
       "isLogged": true,
@@ -1253,7 +1439,7 @@
       "discription": "UK-made, nutritious cat food with locally sourced ingredients. Supports British and Irish farmers with essential vitamins and nutrients.",
       "url": "https://cdn.petsathome.com/public/images/products/900_21927.jpg",
       "catogory": "cat-food",
-      "price": 22.9,
+      "price": "22",
       "rating": 4,
       "quantity": 1
     },
@@ -1276,14 +1462,6 @@
       "price": 46.6,
       "rating": 4,
       "quantity": 1
-    },
-    {
-      "id": "fac8",
-      "heading": "Exciting Pet Toys",
-      "discription": "good toys",
-      "catogory": "pet-toys",
-      "url": "https://i.pinimg.com/736x/4c/d9/16/4cd916e24ff4503b5a32c66b7236d0ff.jpg\"",
-      "price": "34"
     }
   ]
 }

@@ -21,6 +21,7 @@ import ProductEdit from './Admin/ProductEdit';
 import AddProduct from './Admin/AddProduct';
 import Users from './Admin/Users';
 import UserDetails from './Admin/UserDetails';
+import Wishlist from './Components/wishlist/wishlist';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
           <Route path="/footer" element={<Footer />} />
           <Route path="/" element={<Home />} />
           <Route path="/product" element={<Product />} />
+          <Route path='/wishlist' element={<Wishlist/>}/>
 
           {/* Admin Side */}
           <Route path="/admin" element={<AdminMain />}>
@@ -56,7 +58,7 @@ function App() {
             <Route path="addproduct" element={<AddProduct />} />
             <Route path="users" element={<Users />} />
             <Route path="userDetails/:id" element={<UserDetails />} />
-           
+        
 
 
           </Route>

@@ -1,6 +1,8 @@
 
 import axios from "axios";
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 import Swal from "sweetalert2";
 
@@ -11,7 +13,12 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [allproducts, setAllProducts] = useState([]);
+  const [wishlist,setWishlist]=useState([]);
+  const navigate=useNavigate();
+  
   const userid = localStorage.getItem("userId");
+  console.log("userid",userid);
+  
  
 
   
@@ -28,8 +35,11 @@ export const CartProvider = ({ children }) => {
       axios
         .get(`http://localhost:3032/users/${userid}`)
         .then((response) => setCart(response.data.cart || []))
+        
         .catch((error) => console.error("Error fetching user cart:", error));
     }
+    console.log("cart",cart);
+
   }, [userid]);
 
   const updateCartOnServer = (updatedCart) => {
@@ -92,6 +102,47 @@ export const CartProvider = ({ children }) => {
   const getTotalPrice = () => {
     return cart.reduce((total, item) => total + item.price * (item.quantity || 1), 0);
   };
+  const updateWishlistOnServer = (updatedWishlist) => {
+  
+    axios
+      // .patch(`http://localhost:3032/users/${userid}`, { wishlist: updatedWishlist })
+      .patch(`http://localhost:3032/users`)      
+      .then(() => console.log("Wishlist updated on server"))
+      .catch((error) => console.error("Error updating wishlist:", error));
+  };
+ 
+  
+
+  // Add to wishlist
+  const addToWishlist = (product) => {
+    navigate('/wishlist')
+    console.log("product",product);
+    
+    setWishlist((prevWishlist) => {
+      console.log("wishh",setWishlist);
+      
+      if (prevWishlist.some((item) => item.id === product.id)) {
+        Swal.fire("This item is already in your wishlist");
+        return prevWishlist;
+      }
+
+      const updatedWishlist = [...prevWishlist, product];
+      updateWishlistOnServer(updatedWishlist);
+      Swal.fire("Product added to wishlist");
+      return updatedWishlist;
+    });
+  };
+
+  // Remove from wishlist
+  const removeFromWishlist = (id) => {
+    setWishlist((prevWishlist) => {
+      const updatedWishlist = prevWishlist.filter((item) => item.id !== id);
+      updateWishlistOnServer(updatedWishlist);
+      Swal.fire("Product removed from wishlist");
+      return updatedWishlist;
+    });
+  };
+
 
   return (
     <CartContext.Provider
@@ -102,6 +153,9 @@ export const CartProvider = ({ children }) => {
         incrementtQuantity,
         decrementQuantity,
         getTotalPrice,
+        wishlist,
+        addToWishlist,
+        removeFromWishlist,
       }}
     >
       {children}
