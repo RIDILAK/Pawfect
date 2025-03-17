@@ -14,9 +14,13 @@ const Users = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3032/users')
+      .get(`${import.meta.env.VITE_BASEURL}/api/Admin/GetallUsers`,{
+        headers:{
+          Authorization:`Bearer ${localStorage.getItem("token")}`
+        }
+      })
       .then((res) => {
-        const filteredUsers = res.data.filter((u) => !u.email.startsWith('admin'));
+        const filteredUsers = res.data.data.filter((u) => !u.email.startsWith('Admin')&& !u.email.startsWith('admin'));
         setUser(filteredUsers);
       })
       .catch((error) => {

@@ -9,9 +9,15 @@ function UserDetails() {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3032/users/${id}`)
+            .get(`${import.meta.env.VITE_BASEURL}/api/Admin/GetUserById`,{
+                headers:{
+                    Authorization:`Bearer ${localStorage.getItem("token")}`
+                },params:{
+                    id:id
+                }
+            })
             .then((response) => {
-                setUserData(response.data);
+                setUserData(response.data.data);
                 console.log('Fetched User Data:', response.data);
             })
             .catch((error) => {
@@ -22,9 +28,20 @@ function UserDetails() {
     const handleLog = () => {
         const updatedStatus = !userData.isLogged;
         axios
-            .patch(`http://localhost:3032/users/${id}`, { isLogged: updatedStatus })
+            .patch(`${import.meta.env.VITE_BASEURL}/api/Admin/BlockUserById`,{
+  
+            },{
+                headers:{
+                    Authorization:`Bearer ${localStorage.getItem("token")}`
+                },
+                params:{
+                    id:id
+                }
+            })
+                
+            
             .then((response) => {
-                setUserData(response.data);
+                setUserData(response.data.data);
                 console.log('Updated User Data:', response.data);
             })
             .catch((error) => {
@@ -42,7 +59,7 @@ function UserDetails() {
                 onClick={handleBack}
                 className="mb-4 bg-third text-secondary px-4 py-2 rounded-md hover:bg-secondary hover:text-fourth transition"
             >
-                ⇦ Go Back
+                ⇦ 
             </button>
 
             <div className="bg-white p-6 rounded-md shadow-md mb-6 border border-third">

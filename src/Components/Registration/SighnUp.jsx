@@ -34,16 +34,16 @@ function SignUp() {
   const [isAdmin,setIsAdmin]=useState(false)
 
 
-  const checkEmailExists = async (email) => {
-    try {
-      const response = await axios.get('http://localhost:3032/users');
-      const users = response.data;
-      return users.some((user) => user.email === email);
-    } catch (error) {
-      console.error('Error fetching users:', error);
-      return false;
-    }
-  };
+  // const checkEmailExists = async (email) => {
+  //   try {
+  //     const response = await axios.get('http://localhost:3032/users');
+  //     const users = response.data;
+  //     return users.some((user) => user.email === email);
+  //   } catch (error) {
+  //     console.error('Error fetching users:', error);
+  //     return false;
+  //   }
+  // };
 
   return (
     <div className="App flex justify-center items-center min-h-screen bg-fourth">
@@ -53,22 +53,17 @@ function SignUp() {
           validationSchema={signUpValidation}
           onSubmit={async (values, { setSubmitting }) => {
             setEmailError(''); 
-            const emailExists = await checkEmailExists(values.email);
-
-            if (emailExists) {
-              setEmailError('The email is already used. Please use a different email.');
-              setSubmitting(false);
-            } else {
+            
               try {
                 
-                const response = await axios.post('http://localhost:3032/users', {
+                const response = await axios.post(`${import.meta.env.VITE_BASEURL}/api/User/SignUp`, {
                   name: values.name,
                   email: values.email,
                   password: values.password,
-                  cart: [],
-                  ordres: [],
-                  isLogged:true,
-                  isAdmin:isAdmin
+                  // cart: [],
+                  // ordres: [],
+                  // isLogged:true,
+                  // isAdmin:isAdmin
                 });
 
                 console.log('User added:', response.data);
@@ -76,7 +71,7 @@ function SignUp() {
               } catch (error) {
                 console.error('Error adding user:', error);
               }
-            }
+            
           }}
         >
           {({ errors, touched, }) => (
