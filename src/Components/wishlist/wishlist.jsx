@@ -5,7 +5,7 @@ import Footer from "../Pages/Footer";
 
 const WishlistPage = () => {
   const navigate = useNavigate();
-  const { wishlist, removeFromWishlist, addToCart } = useCart();
+  const { wishlist,  addToCart} = useCart();
 
   return (
     <>
@@ -25,12 +25,12 @@ const WishlistPage = () => {
                     <div className="flex items-center space-x-4">
                       <img
                         src={item.url}
-                        alt={item.heading}
+                        alt={item.productName}
                         className="w-16 h-16 object-cover rounded-md"
                       />
                       <div>
                         <h2 className="text-lg font-semibold text-primary">
-                          {item.heading}
+                          {item.productName}
                         </h2>
                         <p className="text-secondary font-medium">
                           ${item.price}
@@ -46,12 +46,7 @@ const WishlistPage = () => {
                         Move to Cart
                       </button>
 
-                      <button
-                        className="px-6 py-2 bg-primary text-white font-semibold rounded-md shadow-md hover:bg-secondary transition-all duration-200"
-                        onClick={() => removeFromWishlist(item.id)}
-                      >
-                        Remove
-                      </button>
+                     
                     </div>
                   </li>
                 ))}
