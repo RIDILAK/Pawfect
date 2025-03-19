@@ -11,7 +11,7 @@ function SignIn() {
 
   const handleSubmit = () => {
     axios
-      .post(`${import.meta.env.VITE_BASEURL}/api/User/loginUser`, {
+      .post(`${import.meta.env.VITE_BASEURL}/api/User/login`, {
         email: email,
         password: password,
       })

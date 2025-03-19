@@ -16,7 +16,7 @@ const ProductAdmin = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BASEURL}/api/Product/GetALlProducts`)
+      .get(`${import.meta.env.VITE_BASEURL}/api/Product/GetALl`)
       .then((response) => {
         setProduct(response.data.data);
       })

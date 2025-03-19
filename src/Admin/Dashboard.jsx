@@ -11,23 +11,40 @@ const Dashboard = () => {
     
     const userCount = async () => {
       try {
-        const response = await axios.get('http://localhost:3032/users');
-        setTotalUsers(response.data.length);
-
-        const ordersCount = response.data.reduce((acc, user) => {
-          return acc + (user.ordres ? user.ordres.length : 0);
-        }, 0);
-        setTotalOrders(ordersCount);
+        const response = await axios.get(`${import.meta.env.VITE_BASEURL}/api/Admin/GetallUsers`,{
+          headers:{
+           Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+        });
+        setTotalUsers(response.data.data.length);
+        // const ordersCount = response.data.reduce((acc, user) => {
+        //   return acc + (user.ordres ? user.ordres.length : 0);
+        // }, 0);
+        // setTotalOrders(ordersCount);
       } catch (error) {
         console.error('Error fetching users:', error);
       }
     };
 
+    const orderCount = async ()=>{
+      try{
+        const response= await axios.get(`${import.meta.env.VITE_BASEURL}/api/Order/Get-All`,{
+          headers:{
+            Authorization:`Bearer ${localStorage.getItem("token")}`
+          }
+        });
+        setTotalOrders(response.data.data.length);
+      } catch(error){
+        console.error('Error fetching Orders:',error);
+        
+      }
+    }
+
    
     const ProductsCount = async () => {
       try {
-        const response = await axios.get('http://localhost:3032/products');
-        setTotalProducts(response.data.length);
+        const response = await axios.get(`${import.meta.env.VITE_BASEURL}/api/Product/GetALl`);
+        setTotalProducts(response.data.data.length);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -35,6 +52,7 @@ const Dashboard = () => {
 
     userCount ();
     ProductsCount();
+    orderCount();
   }, []);
 
   return (
