@@ -5,7 +5,7 @@ import Footer from "../Pages/Footer";
 
 const WishlistPage = () => {
   const navigate = useNavigate();
-  const { wishlist,  addToCart} = useCart();
+  const { wishlist,  addTocart} = useCart();
 
   return (
     <>
@@ -41,7 +41,7 @@ const WishlistPage = () => {
                     <div className="flex gap-4">
                       <button
                         className="px-6 py-2 bg-primary text-white font-semibold rounded-md shadow-md hover:bg-secondary transition-all duration-200"
-                        onClick={() => addToCart(item.id)}
+                        onClick={() => addTocart(item.productId)}
                       >
                         Move to Cart
                       </button>

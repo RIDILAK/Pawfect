@@ -13,7 +13,7 @@ const Product = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BASEURL}/api/Product/GetALl`) // ✅ Ensure correct API endpoint
+      .get(`${import.meta.env.VITE_BASEURL}/api/Product/GetALl`) 
       .then((response) => {
         setFilterProduct(response.data.data);
       })
@@ -84,7 +84,7 @@ const Product = () => {
                         wishlistIds.includes(item.id) ? "text-red-500" : "text-primary"
                       }`}
                     >
-                      <FaHeart />
+                      <FaHeart/>
                     </button>
                   </div>
 

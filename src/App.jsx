@@ -6,7 +6,6 @@ import SignIn from './Components/Registration/SignIn';
 import ProductDetails from './Components/Products/ProductDetails';
 import CartPage from './Components/Cart/CartPage';
 import { CartProvider } from './Context/CartContext';
-import PayForm from './Payment/PayForm';
 import Orders from './Payment/Orders';
 import NavBar from './Components/Navbar/NavBar';
 import Services from './Components/Pages/Services';
@@ -22,6 +21,8 @@ import AddProduct from './Admin/AddProduct';
 import Users from './Admin/Users';
 import UserDetails from './Admin/UserDetails';
 import Wishlist from './Components/wishlist/wishlist';
+import Address from './Payment/Address';
+import AddAdress from './Payment/AddAdrs';
 
 
 function App() {
@@ -42,13 +43,14 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/productDetails/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/payform" element={<PayForm />} />
+          <Route path="/AddAdress" element={<AddAdress />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/services" element={<Services />} />
           <Route path="/footer" element={<Footer />} />
           <Route path="/" element={<Home />} />
           <Route path="/product" element={<Product />} />
           <Route path='/wishlist' element={<Wishlist/>}/>
+          <Route path='/address' element={<Address/>}/>
 
           {/* Admin Side */}
           <Route path="/admin" element={<AdminMain />}>

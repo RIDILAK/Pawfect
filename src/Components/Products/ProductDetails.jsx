@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { addToCart, addToWishlist } = useCart();
+  const { addTocart, addToWishlist } = useCart();
   const [product, setProduct] = useState({});
   // const user = localStorage.getItem("userId")
 
@@ -32,13 +32,7 @@ const ProductDetails = () => {
   }, [id]);
 
   const handleAddToCart = (id) => {
-    if (!user) {
-      Swal.fire("Please login to add items to your cart.");
-      navigate("/signin");
-      return;
-    } else {
-      addToCart(id);
-    }
+    addTocart(id);
   };
 
   return (
