@@ -65,7 +65,7 @@ const ProductDetails = () => {
                   {product.productName}
                 </h1>
                 <p className="text-xl text-secondary mb-4 font-semibold">
-                  Price: $ <span className="text-primary">{product.price}</span>
+                  Price: ₹ <span className="text-primary">{product.price}</span>
                 </p>
                 <p className="text-lg text-gray-700 mb-4">
                   Rating:{" "}

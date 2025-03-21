@@ -29,8 +29,8 @@ const AddAdress = () => {
     }));
   };
 
-const handleSubmit=()=>{
- 
+const handleSubmit=(e)=>{
+ e.preventDefault();
   console.log(formData);
   axios
   .post(`${import.meta.env.VITE_BASEURL}/api/Address/Add`,formData,{
@@ -40,6 +40,8 @@ const handleSubmit=()=>{
     }
   })
   .then((response)=>{
+    console.log(response);
+    
     console.log("Added Address");
     Swal.fire(response.data.message)
     navigate("/address")
@@ -121,7 +123,7 @@ const handleSubmit=()=>{
   return (
     <div className="max-w-lg mx-auto bg-white shadow-xl rounded-lg p-8 mt-12">
       <h2 className="text-3xl font-bold mb-8 text-center text-primary">Address Form</h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form className="space-y-6">
         <div className="space-y-4">
           <input type="text" name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} className="block w-full px-6 py-3 border border-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-third" />
           {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
@@ -150,7 +152,7 @@ const handleSubmit=()=>{
 
       
 
-        <button type="submit" className="w-full py-3 px-6 bg-primary text-white rounded-lg hover:bg-secondary focus:outline-none focus:ring-4 focus:ring-third">
+        <button type="button" onClick={handleSubmit}  className="w-full py-3 px-6 bg-primary text-white rounded-lg hover:bg-secondary focus:outline-none focus:ring-4 focus:ring-third">
           Submit Address
         </button>
       </form>

@@ -58,7 +58,7 @@ const CartPage = () => {
                           {item.productName}
                         </h2>
                         <p className="text-secondary font-medium">
-                          ${item.price}
+                        ₹{item.price}
                         </p>
                         <div className="flex items-center mt-2">
                           <button
@@ -92,14 +92,14 @@ const CartPage = () => {
               <div className="mt-8 text-right">
                 <h2 className="text-2xl font-bold text-primary">
                   Total Price:{" "}
-                  <span className="text-secondary">${cart?.totalAmount}</span>
+                  <span className="text-secondary">₹{cart?.totalAmount}</span>
                 </h2>
 
                 <button
                   onClick={() => handleProceedToPayment()}
                   className="mt-4 px-6 py-3 bg-primary text-white font-bold rounded-md shadow-md hover:bg-secondary transition-all duration-200"
                 >
-                  Proceed to Payment
+                  Proceed 
                 </button>
               </div>
             </>
