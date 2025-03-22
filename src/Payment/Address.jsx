@@ -2,13 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import Razorpay from "./RazorPay";
 import { useCart } from "../Context/CartContext";
 
 const Address = () => {
   const [address, setAddress] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
-  const[totalPrice,setTotalPrice]=useState([]);
+  // const[totalPrice,setTotalPrice]=useState([]);
   const{cart}=useCart();
   const navigate = useNavigate();
 
@@ -21,20 +22,25 @@ const Address = () => {
       .catch((error) => console.error("Error fetching address", error));
   };
 
-  const GetTotalPrice=()=>{
-    console.log("Total Amount:", cart.totalAmount);
-    axios
-    .post(`${import.meta.env.VITE_BASEURL}/api/Order/Create-RazorPay`, { price: cart.totalAmount },{
-      headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}
-    })
-    .then((response)=>
-      setTotalPrice(response.data.data))
-    // console.log(response.data.data))
+  // const createOrder=()=>{
+  //   console.log("Total Amount:", cart.totalAmount);
+  //   axios
+  //   .post(`${import.meta.env.VITE_BASEURL}/api/Order/Create-RazorPay`,{},{
+  //     headers:
+  //     {Authorization:`Bearer ${localStorage.getItem("token")}`},
+  //     params:{
+  //            price:cart.totalAmount
+  //     }
+      
+  //   })
+  //   .then((response)=>
+  //     setTotalPrice(response.data.data))
+  //   // console.log(response.data.data))
     
-    .catch((error)=>console.error(console.error("Error in payment",error)
-    )
-    )
-  }
+  //   .catch((error)=>console.error(console.error("Error in payment",error)
+  //   )
+  //   )
+  // }
 
   // const fetchCartItems = () => {
   //   axios
@@ -130,7 +136,9 @@ const Address = () => {
              
               <div className="flex gap-4 mt-4">
                 <button
-                  onClick={() => setSelectedAddress(addr)}
+                  onClick={() => {
+                  
+                    setSelectedAddress(addr)}}
                   className="bg-secondary text-white py-1.5 px-5 rounded-lg shadow-md hover:bg-primary transition duration-300"
                 >
                   Select
@@ -176,7 +184,7 @@ const Address = () => {
                  <img src={item.url} alt={item.productName} className="w-full h-full object-cover rounded-lg shadow-md" />
                </span>
                <span className="flex-1 px-4">{item.productName} </span>
-               <span className="text-secondary font-semibold">₹{item.price}</span>
+               <span className="text-secondary font-semibold~">₹{item.price}</span>
             
              </li>
            
@@ -191,12 +199,17 @@ const Address = () => {
 
         
           <div className="text-center mt-6">
-            <button
-              onClick={GetTotalPrice}
+            {/* <button
+              onClick={createOrder}
               className="bg-primary text-white py-2 px-6 rounded-md shadow-md hover:bg-secondary transition duration-300"
             >
               Proceed to Checkout
-            </button>
+            </button> */}
+              <Razorpay
+          address={address}
+          amount={cart?.totalAmount}
+          addressId={selectedAddress}
+        />
           </div>
         </div>
       )}

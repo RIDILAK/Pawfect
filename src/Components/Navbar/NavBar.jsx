@@ -21,12 +21,26 @@ function NavBar() {
   const person = localStorage.getItem("userId");
   const userName = localStorage.getItem("userName");
 
-  useEffect(() => {
+  const handleProduct=()=> {
     axios
-      .get("http://localhost:3032/products")
-      .then((res) => setProducts(res.data))
+      .get(`${import.meta.env.VITE_BASEURL}/api/Product/GetALl`)
+      .then((res) => setProducts(res.data.data))
       .catch((err) => console.error("Error fetching products:", err));
-  }, []);
+  };
+
+  const handleSearch=()=>{
+    axios
+    .get(`${import.meta.env.VITE_BASEURL}/api/Product/Search`)
+    .then((res)=>setSearch(res.data.data))
+    .catch((err)=>console.error("Error in search",err)
+    )
+  }
+
+  useEffect(()=>{
+    handleProduct();
+    handleSearch()
+  },[])
+
 
   useEffect(() => {
     if (search.length > 0) {

@@ -23,6 +23,7 @@ import UserDetails from './Admin/UserDetails';
 import Wishlist from './Components/wishlist/wishlist';
 import Address from './Payment/Address';
 import AddAdress from './Payment/AddAdrs';
+import Razorpay from './Payment/RazorPay';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
           <Route path="/product" element={<Product />} />
           <Route path='/wishlist' element={<Wishlist/>}/>
           <Route path='/address' element={<Address/>}/>
+          <Route path='/razorPay' element={<Razorpay/>}/>
 
           {/* Admin Side */}
           <Route path="/admin" element={<AdminMain />}>
