@@ -9,53 +9,83 @@ import { FaHeart, FaUserCircle } from "react-icons/fa";
 import ResponsiveMenu from "./ResponsiveMenu";
 import MainLogo from "../../assets/logo.png";
 import { div } from "framer-motion/client";
+import { useCart } from "../../Context/CartContext";
 
 function NavBar() {
   const [open, setOpen] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
   const [search, setSearch] = useState("");
   const [products, setProducts] = useState([]);
+  // const [user, setUser] = useState([]);
+  const{user,handleUser,setUser}=useCart();
   const [filteredProducts, setFilteredProducts] = useState([]);
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
-  const person = localStorage.getItem("userId");
-  const userName = localStorage.getItem("userName");
+  // const person = localStorage.getItem("userId");
+  // const userName = localStorage.getItem("userName");
 
-  const handleProduct=()=> {
+  // const handleUser = async () => {
+  //   await axios
+  //     .get(`${import.meta.env.VITE_BASEURL}/api/Admin/GetUser`, {
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //       },
+  //     })
+  //     .then((res) => setUser(res.data.data))
+  //     .catch((error) => console.error("Error in user", error));
+  // };
+
+  const handleProduct = () => {
     axios
       .get(`${import.meta.env.VITE_BASEURL}/api/Product/GetALl`)
       .then((res) => setProducts(res.data.data))
       .catch((err) => console.error("Error fetching products:", err));
   };
 
-  const handleSearch=()=>{
+  const handleSearch = () => {
     axios
-    .get(`${import.meta.env.VITE_BASEURL}/api/Product/Search`)
-    .then((res)=>setSearch(res.data.data))
-    .catch((err)=>console.error("Error in search",err)
-    )
-  }
+      .get(`${import.meta.env.VITE_BASEURL}/api/Product/Search`)
+      .then((res) => setSearch(res.data.data))
+      .catch((err) => console.error("Error in search", err));
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     handleProduct();
-    handleSearch()
-  },[])
-
+    handleSearch();
+  }, []);
+  // useEffect(() => {
+  //   handleUser();
+  // }, [user]);
+  // useEffect(() => {
+  //   if (user.length > 0 && person) {
+  //     // Find the logged-in user by matching the ID
+  //     const loggedInUser = user.find((u) => u.id === person);
+  //     if (loggedInUser) {
+  //       setUser(loggedInUser); // Update state with logged-in user details
+  //     }
+  //   }
+  // }, [user, person]);
 
   useEffect(() => {
     if (search.length > 0) {
       const filtered = products.filter((product) =>
-        product.heading.toLowerCase().includes(search.toLowerCase())
+        product.productName.toLowerCase().includes(search.toLowerCase())
       );
       setFilteredProducts(filtered);
+      console.log("searced", filteredProducts);
     } else {
       setFilteredProducts([]);
     }
   }, [search, products]);
 
+  // logout
   const handleLog = () => {
     localStorage.clear();
+    setUser([]);
     navigate("/signin");
+    handleUser()
+    setShowLogout(false);
   };
 
   const toggleLogoutMenu = () => {
@@ -66,7 +96,6 @@ function NavBar() {
     <>
       <nav className="bg-fourth shadow-md fixed top-0 left-0 w-full z-50">
         <div className="container mx-auto flex justify-between items-center py-4 px-6">
-          {/* Logo */}
           <div className="flex items-center gap-2 font-bold text-primary">
             <img
               src={MainLogo}
@@ -76,7 +105,6 @@ function NavBar() {
             <span className="text-xl">Pawfect</span>
           </div>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex gap-6">
             {NavBarMenu.map((item) => (
               <Link
@@ -89,9 +117,7 @@ function NavBar() {
             ))}
           </div>
 
-          {/* Icons Section */}
           <div className="flex items-center gap-6">
-            {/* Wishlist Icon */}
             <button
               onClick={() => navigate("/wishlist")}
               className="text-2xl text-primary hover:bg-secondary hover:text-white rounded-full p-2 duration-200"
@@ -111,7 +137,6 @@ function NavBar() {
                 <CiSearch className="text-2xl text-primary cursor-pointer" />
               </div>
 
-              {/* Search Results Dropdown */}
               {search.length > 0 &&
                 (filteredProducts.length > 0 ? (
                   <div className="absolute left-0 mt-2 w-56 bg-white border border-gray-300 shadow-lg rounded-md max-h-60 overflow-y-auto">
@@ -131,7 +156,7 @@ function NavBar() {
                         />
                         <div className="flex flex-col">
                           <span className="text-sm font-semibold">
-                            {product.heading}
+                            {product.productName}
                           </span>
                           <span className="text-xs text-gray-500">
                             ${product.price}
@@ -146,7 +171,7 @@ function NavBar() {
                   </div>
                 ))}
             </div>
-            {/* Cart Icon */}
+
             <button
               onClick={() => navigate("/cart")}
               className="text-2xl text-primary hover:bg-secondary hover:text-white rounded-full p-2 duration-200"
@@ -154,7 +179,6 @@ function NavBar() {
               <CiShoppingCart />
             </button>
 
-            {/* Orders Icon */}
             <button
               onClick={() => navigate("/orders")}
               className="text-2xl text-primary hover:bg-secondary hover:text-white rounded-full p-2 duration-200"
@@ -162,15 +186,14 @@ function NavBar() {
               <BiPackage />
             </button>
 
-            {/* User Profile / Logout */}
-            {person ? (
+            {token ? (
               <div className="relative flex items-center gap-2">
                 <button
                   className="flex items-center text-primary"
                   onClick={toggleLogoutMenu}
                 >
                   <FaUserCircle className="text-2xl" />
-                  <span className="ml-2 text-primary">{userName}</span>
+                  <span className="ml-2 text-primary">{user.name}</span>
                 </button>
 
                 {showLogout && (
@@ -192,7 +215,6 @@ function NavBar() {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden" onClick={() => setOpen(!open)}>
             <MdMenu className="text-4xl text-primary cursor-pointer" />
           </div>
