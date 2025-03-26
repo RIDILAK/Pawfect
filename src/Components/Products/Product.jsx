@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Pages/Footer";
 import { FaHeart } from "react-icons/fa";
-import { useCart } from "../../Context/CartContext"; // Import Cart Context
+import { useCart } from "../../Context/CartContext"; 
 
 const Product = () => {
   const [products, setProducts] = useState([]);

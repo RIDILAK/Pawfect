@@ -156,7 +156,7 @@ const Address = () => {
       )}
 
       
-      {selectedAddress && cart.items.length > 0 && (
+      {selectedAddress && cart?.items?.length > 0 && (
         <div className="mt-10 p-6 bg-white border border-third shadow-md rounded-lg">
           <h3 className="text-2xl font-bold text-primary mb-4">Order Summary</h3>
 
@@ -178,8 +178,8 @@ const Address = () => {
           <div className="mt-4">
             <h4 className="text-lg font-semibold text-primary mb-2">Cart Items</h4>
             <ul>
-              {cart?.items?.map((item) => (
-               <li key={item.id} className="flex items-center justify-between border-b py-2 text-gray-800">
+              {cart?.items?.map((item, index) => (
+               <li key={index} className="flex items-center justify-between border-b py-2 text-gray-800">
                <span className="w-16 h-16 flex-shrink-0">
                  <img src={item.url} alt={item.productName} className="w-full h-full object-cover rounded-lg shadow-md" />
                </span>

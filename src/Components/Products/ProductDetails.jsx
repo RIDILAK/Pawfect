@@ -41,7 +41,7 @@ const ProductDetails = () => {
         <div className="flex-grow mt-32">
           <div className="container mx-auto p-6">
             <div className="flex flex-col lg:flex-row items-center bg-fourth rounded-lg shadow-md p-6 gap-6">
-              {/* Product Image with Wishlist Icon */}
+             
               <div className="w-full lg:w-1/2 flex justify-center relative">
                 <div className="relative w-full h-64 lg:h-80 overflow-hidden rounded-lg shadow-lg">
                   <img
@@ -49,7 +49,7 @@ const ProductDetails = () => {
                     alt={product.productName}
                     className="absolute inset-0 w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                   />
-                  {/* Wishlist Icon Positioned in Top-Right */}
+  
                   <button
                     onClick={() => addToWishlist(product.id)}
                     className="absolute top-3 right-3 text-2xl text-primary bg-white p-2 rounded-full shadow-md hover:bg-secondary hover:text-white duration-200"
@@ -59,7 +59,6 @@ const ProductDetails = () => {
                 </div>
               </div>
 
-              {/* Product Details */}
               <div className="w-full lg:w-1/2">
                 <h1 className="text-3xl font-bold text-primary mb-4">
                   {product.productName}

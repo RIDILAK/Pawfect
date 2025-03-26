@@ -1,11 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useCart } from "../../Context/CartContext";
 import Footer from "../Pages/Footer";
 
 const WishlistPage = () => {
   const navigate = useNavigate();
-  const { wishlist,  addTocart} = useCart();
+  const { wishlist, addTocart } = useCart();
 
   return (
     <>
@@ -14,7 +14,7 @@ const WishlistPage = () => {
           <h1 className="text-3xl font-bold text-primary text-center mb-6">
             Your Wishlist
           </h1>
-          {wishlist.length > 0 ? (
+          {wishlist?.length > 0 ? (
             <>
               <ul className="space-y-4">
                 {wishlist.map((item, index) => (
@@ -23,15 +23,20 @@ const WishlistPage = () => {
                     className="flex items-center justify-between bg-third shadow-md p-4 rounded-lg"
                   >
                     <div className="flex items-center space-x-4">
-                      <img
-                        src={item.url}
-                        alt={item.productName}
-                        className="w-16 h-16 object-cover rounded-md"
-                      />
+                      <Link to={`/productDetails/${item.productId}`}>
+                        <img
+                          src={item.url}
+                          alt={item.productName}
+                          className="w-16 h-16 object-cover rounded-md cursor-pointer"
+                        />
+                      </Link>
                       <div>
-                        <h2 className="text-lg font-semibold text-primary">
+                        <Link
+                          to={`/productDetails/${item.productId}`}
+                          className="text-lg font-semibold text-primary hover:underline"
+                        >
                           {item.productName}
-                        </h2>
+                        </Link>
                         <p className="text-secondary font-medium">
                           ${item.price}
                         </p>
@@ -45,8 +50,6 @@ const WishlistPage = () => {
                       >
                         Move to Cart
                       </button>
-
-                     
                     </div>
                   </li>
                 ))}

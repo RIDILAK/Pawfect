@@ -3,11 +3,13 @@ import { text } from "framer-motion/client";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useCart } from "../../Context/CartContext";
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const {handleUser} = useCart()
 
   const handleSubmit = () => {
     axios
@@ -35,6 +37,7 @@ function SignIn() {
               icon: "success",
               text: "Successfully logged in",
             });
+            handleUser()
             navigate("/");
           }
         }
@@ -50,7 +53,7 @@ function SignIn() {
         console.error("Error fetching data:", error);
         Swal.fire({
           icon: "error",
-          text: "An error occurred. Please try again.",
+          text: "Invalid email or password",
         });
       });
   };
