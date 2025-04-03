@@ -11,6 +11,7 @@ import MainLogo from "../../assets/logo.png";
 import { div } from "framer-motion/client";
 import { useCart } from "../../Context/CartContext";
 
+
 function NavBar() {
   const [open, setOpen] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
