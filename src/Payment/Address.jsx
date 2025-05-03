@@ -208,7 +208,7 @@ const Address = () => {
               <Razorpay
           address={address}
           amount={cart?.totalAmount}
-          addressId={selectedAddress}
+          addressId={selectedAddress}    
         />
           </div>
         </div>
